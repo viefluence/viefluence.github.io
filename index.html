@@ -1,543 +1,237 @@
-<!DOCTYPE html>
+
+   <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Your Next Campaign Starts Here</title>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Google Font (similar to the one in the example) -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <title>Viefluence — Where Brands Meet the Right Creators</title>
+  <meta name="description" content="Viefluence connects forward‑thinking brands with exceptional tech & STEM creators — a simple, human matchmaking service from first contact to final delivery." />
+  <meta property="og:title" content="Viefluence — Where Brands Meet the Right Creators" />
+  <meta property="og:description" content="Influencer matchmaking for tech & STEM. Brands × Creators." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#7b61ff" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      /* Palette aligned with your reference */
+      --bg: #f6f2ff;           /* soft lilac */
+      --bg-accent: #efe8ff;    /* subtle panel */
+      --ink: #0f1225;          /* main text (deep navy) */
+      --muted: #65677a;        /* secondary text */
+      --card: #ffffff;         /* cards */
+      --purple: #7b61ff;       /* primary */
+      --purple-2: #b86dff;     /* accent */
+      --night: #0e1020;        /* dark */
+      --success: #4ad57a;
+      --danger: #ff5f6d;
+      --shadow: 0 20px 60px rgba(15,18,37,.14);
+      --radius-xl: 28px;
     }
 
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at top left, #f5f7ff 0, #f9f0ff 35%, #f3fcff 70%, #f4f4ff 100%);
-      color: #111827;
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 15% -10%, #ffffff 10%, transparent 60%),
+        radial-gradient(1200px 800px at 90% -20%, #ffffff 10%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, #faf7ff 100%);
     }
 
-    .hero {
-      max-width: 1200px;
-      width: 100%;
-      padding: 3rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 3rem;
+    a { color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+
+    header { padding: 28px 0 0; }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
     }
+    .logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo svg { height: 28px; width: auto; display: block; }
+
+    /* Wordmark only, same color as site (no burgundy) */
+    .wordmark { font-weight: 800; letter-spacing: .6px; font-size: 18px; color: var(--ink); }
+
+    .cta-email {
+      display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+      padding: 12px 18px; border-radius: 14px; background: var(--ink); color: #fff;
+      font-weight: 600; letter-spacing: .2px; box-shadow: var(--shadow);
+    }
+    .cta-email:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 36px; padding: 64px 0 40px; }
+    .eyebrow { text-transform: uppercase; font-size: 12px; letter-spacing: .2em; color: var(--muted); font-weight: 600; }
+    .h1 { font-size: clamp(36px, 6vw, 72px); line-height: 1.02; font-weight: 800; margin: 10px 0 18px; }
+    .h1 .accent { color: var(--purple); }
+    .sub { font-size: clamp(16px, 2.4vw, 18px); color: var(--muted); max-width: 50ch; }
 
     /* Phones */
-    .phone-column {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-    }
+    .phones { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
+    /* outer smartphone frame */
     .phone {
-      width: 320px;
-      height: 620px;
-      background: #ffffff;
-      border-radius: 38px;
-      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18);
-      padding: 1.4rem 1.25rem;
-      position: relative;
-      overflow: hidden;
+      background: var(--card); border-radius: 44px; padding: 18px 14px; box-shadow: var(--shadow);
+      outline: 6px solid #0f1225; /* bezel */
+      overflow: hidden; position: relative; min-height: 560px;
+    }
+    .notch { width: 46%; height: 6px; background: #e8e6f7; border-radius: 999px; margin: 0 auto 12px; }
+    .homebar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 90px; height: 6px; background: #d9d7ea; border-radius: 99px; opacity: .9; }
+
+    .banner {
+      margin: 0 14px; border-radius: 22px; padding: 24px; background: #9bb2ff; color: #fff; font-size: 26px; font-weight: 800; line-height: 1.2;
     }
 
-    .phone::before {
-      content: "";
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 35%;
-      height: 6px;
-      border-radius: 999px;
-      background: #e5e7eb;
+    .chat { position: absolute; left: 16px; right: 16px; bottom: 36px; display: flex; flex-direction: column; gap: 12px; }
+    .bubble { padding: 12px 14px; border-radius: 16px; font-size: 14px; line-height: 1.4; max-width: 86%; box-shadow: 0 8px 24px rgba(10,12,30,.06); display: flex; align-items: center; gap: 10px; }
+    .bubble.brand { background: #fff; border: 1px solid #eef; align-self: flex-start; }
+    .bubble.creator { background: #f0f5ff; align-self: flex-end; }
+
+    .avatar { width: 34px; height: 34px; border-radius: 50%; flex: 0 0 34px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+    .avatar svg { display: block; width: 100%; height: 100%; }
+
+    /* Right (brand) phone — simplified */
+    .toast { position: absolute; left: 16px; right: 16px; bottom: 36px; display: grid; gap: 10px; }
+    .toast .item { background: #fff; border-radius: 18px; padding: 12px 14px; box-shadow: 0 12px 26px rgba(10,12,30,.08); display: flex; justify-content: space-between; align-items: center; font-size: 14px; border: 1px solid rgba(12,14,30,.06); }
+    .toast .emph { border: 2px solid var(--purple); box-shadow: 0 16px 36px rgba(123,97,255,.25); }
+    .left { display: flex; align-items: center; gap: 10px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+
+    /* About */
+    .section { padding: 60px 0 36px; }
+    .lead { font-size: 18px; color: var(--muted); max-width: 72ch; }
+
+    /* Contact */
+    .contact { background: linear-gradient(180deg, rgba(123,97,255,.08), rgba(184,109,255,.06)); border: 1px solid rgba(123,97,255,.15); border-radius: var(--radius-xl); padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; box-shadow: var(--shadow); }
+    .contact h3 { margin: 0; font-size: clamp(22px, 2.6vw, 28px); }
+
+    footer { padding: 38px 0 60px; color: var(--muted); font-size: 14px; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .float-l { animation: float 9s ease-in-out infinite; }
+      .float-r { animation: float 11s ease-in-out infinite; }
+      @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     }
-
-    .phone-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 1.5rem;
-      margin-bottom: 1.25rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .avatar-sm {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      background: url("https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=80&q=80") center/cover;
-    }
-
-    .screen-card {
-      border-radius: 26px;
-      padding: 1.75rem 1.5rem;
-      background: linear-gradient(145deg, #4ea3ff, #9ab9ff);
-      color: #ffffff;
-      margin-bottom: 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .search-bar {
-      display: flex;
-      align-items: center;
-      background: #ffffff;
-      border-radius: 999px;
-      padding: 0.55rem 0.75rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .search-bar input {
-      border: none;
-      outline: none;
-      flex: 1;
-      font-size: 0.8rem;
-      color: #4b5563;
-      font-family: inherit;
-    }
-
-    .search-bar span {
-      font-size: 1.1rem;
-    }
-
-    .screen-card h2 {
-      font-size: 1.6rem;
-      line-height: 1.2;
-      font-weight: 600;
-    }
-
-    .screen-card h2 span {
-      font-weight: 700;
-    }
-
-    .bubble {
-      position: absolute;
-      left: -10px;
-      bottom: 70px;
-      width: 260px;
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 0.75rem 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 10px 32px rgba(15, 23, 42, 0.18);
-      font-size: 0.78rem;
-    }
-
-    .bubble-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: url("https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=80&q=80") center/cover;
-    }
-
-    .bubble p span {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 0.1rem;
-    }
-
-    .bubble-2 {
-      position: absolute;
-      right: -5px;
-      bottom: 28px;
-      width: 220px;
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 0.75rem 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 10px 32px rgba(15, 23, 42, 0.18);
-      font-size: 0.78rem;
-    }
-
-    .bubble-2 .bubble-avatar {
-      background-image: url("https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=80&q=80");
-    }
-
-    /* Right phone content: chips + dark card */
-    .logo-row {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 1.3rem;
-    }
-
-    .logo-chip {
-      width: 45px;
-      height: 45px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #111827;
-      background: #ffffff;
-    }
-
-    .campaign-card {
-      border-radius: 24px;
-      background: #0f172a;
-      padding: 1.6rem 1.4rem;
-      color: #e5e7eb;
-      margin-bottom: 1.5rem;
-    }
-
-    .campaign-card h3 {
-      font-size: 1.2rem;
-      line-height: 1.35;
-      margin-bottom: 1rem;
-    }
-
-    .campaign-meta {
-      display: flex;
-      gap: 1.1rem;
-      font-size: 0.7rem;
-      opacity: 0.85;
-    }
-
-    .campaign-meta span {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .campaign-meta strong {
-      font-size: 0.8rem;
-    }
-
-    .notif {
-      position: absolute;
-      left: -10px;
-      bottom: 65px;
-      width: 260px;
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 0.75rem 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      box-shadow: 0 10px 32px rgba(15, 23, 42, 0.18);
-      font-size: 0.78rem;
-    }
-
-    .notif-logo {
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .notif p span {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 0.1rem;
-    }
-
-    .notif-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: #22c55e;
-      margin-left: auto;
-    }
-
-    .notif-2 {
-      position: absolute;
-      right: -5px;
-      bottom: 20px;
-      width: 255px;
-    }
-
-    .notif-2 .notif-logo {
-      font-size: 1rem;
-    }
-
-    .notif-2 .notif-dot {
-      background: #f97373;
-    }
-
-    /* Center content */
-    .content {
-      flex: 1.2;
-      text-align: center;
-      max-width: 540px;
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #6b7280;
-      margin-bottom: 0.75rem;
-    }
-
-    h1 {
-      font-size: clamp(2.3rem, 4vw, 3.3rem);
-      line-height: 1.1;
-      margin-bottom: 0.4rem;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #f973c9, #a855f7, #60a5fa);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .subtitle {
-      margin-top: 0.8rem;
-      font-size: 0.95rem;
-      color: #4b5563;
-      max-width: 430px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .store-row {
-      margin-top: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      border-radius: 999px;
-      border: 1px solid #d1d5db;
-      padding: 0.6rem 1.1rem;
-      font-size: 0.8rem;
-      background: #ffffff;
-      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-      cursor: pointer;
-      transition: transform 0.12s ease, box-shadow 0.12s ease;
-    }
-
-    .store-btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.14);
-    }
-
-    .store-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      border: 1px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-    }
-
-    .store-text span {
-      display: block;
-      line-height: 1.1;
-    }
-
-    .store-text span:first-child {
-      font-size: 0.7rem;
-      color: #6b7280;
-    }
-
-    .store-text span:last-child {
-      font-size: 0.9rem;
-      font-weight: 600;
-    }
-
-    .download-label {
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-
-    @media (max-width: 1024px) {
-      .hero {
-        flex-direction: column;
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-      }
-
-      .phone-column {
-        order: 2;
-      }
-
-      .content {
-        order: 1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding: 2.5rem 1.25rem;
-      }
-
-      .phone {
-        transform: scale(0.95);
-      }
-
-      .subtitle {
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .phone {
-        width: 280px;
-        height: 560px;
-      }
-
-      .bubble,
-      .bubble-2,
-      .notif,
-      .notif-2 {
-        display: none;
-      }
-    }
+    @media (max-width: 980px) { .hero { grid-template-columns: 1fr; } .phones { order: -1; } }
   </style>
 </head>
 <body>
-  <main class="hero">
-    <!-- Left Phone -->
-    <div class="phone-column">
-      <div class="phone">
-        <div class="phone-header">
-          <span>Welcome Sarah!</span>
-          <div class="avatar-sm"></div>
-        </div>
-
-        <div class="screen-card">
-          <div class="search-bar">
-            <input type="text" placeholder="Find campaigns">
-            <span>🔍</span>
-          </div>
-          <h2>
-            Doing <span>collabs</span><br />
-            has never been<br />
-            so easy
-          </h2>
-        </div>
-
-        <div class="bubble">
-          <div class="bubble-avatar"></div>
-          <p>
-            <span>Hi Sarah!</span>
-            Nice offer, but it’s a bit above<br />
-            our budget.
-          </p>
-        </div>
-
-        <div class="bubble-2">
-          <div class="bubble-avatar"></div>
-          <p>
-            <span>Ok Alex!</span>
-            I’ll send the adjusted offer<br />
-            in a moment!
-          </p>
-        </div>
+  <div class="container">
+    <!-- Top Nav -->
+    <header>
+      <div class="nav" aria-label="Top Navigation">
+        <a class="logo" href="#" aria-label="Viefluence Home">
+          <!-- LOGO: wordmark only (no star), same ink color -->
+          <svg viewBox="0 0 260 28" role="img" aria-label="Viefluence wordmark">
+  <defs>
+    <linearGradient id="gradVIE" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="var(--purple)"/>
+      <stop offset="1" stop-color="var(--purple-2)"/>
+    </linearGradient>
+  </defs>
+  <text x="2" y="22" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1.2" fill="url(#gradVIE)">VIE</text>
+  <text x="60" y="22" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1.2" fill="var(--ink)">FLUENCE</text>
+</svg>
+          
+        </a>
+        
       </div>
-    </div>
+    </header>
 
-    <!-- Center Content -->
-    <section class="content">
-      <div class="eyebrow">For creators & brands</div>
-      <h1>Your next campaign<br /><span class="gradient-text">starts here.</span></h1>
-      <p class="subtitle">
-        Join our platform for free, find matching deals with top brands and manage every step of your
-        influencer campaigns inside one simple app.
-      </p>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="home-hero">
+      <div>
+        <div class="eyebrow">For creators & brands</div>
+        <h1 id="home-hero" class="h1">Your next <span class="accent">campaign</span> starts here.</h1>
+        <p class="sub">Viefluence connects forward‑thinking brands with exceptional tech & STEM creators — simplifying collaborations from first contact to final delivery.</p>
+      </div>
 
-      <div class="download-label">Download the app</div>
-      <div class="store-row">
-        <button class="store-btn">
-          <div class="store-icon"></div>
-          <div class="store-text">
-            <span>Download on the</span>
-            <span>App Store</span>
+      <div class="phones">
+        <!-- Left Phone (Creators) -->
+        <div class="phone float-l" aria-label="Creator phone mockup">
+          <div class="notch" aria-hidden="true"></div>
+          <!-- Search bar removed as requested -->
+          <div class="banner" aria-hidden="true">Doing Collabs have never been so easy</div>
+          <div class="chat" role="log" aria-live="polite">
+            <div class="bubble brand">
+              <span class="avatar" aria-hidden="true">
+                <!-- Luke avatar (gradient + initial L) -->
+                <svg viewBox="0 0 100 100"><defs><linearGradient id="aL" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#7b61ff"/><stop offset="1" stop-color="#b86dff"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#aL)"/><text x="50" y="62" font-size="52" font-weight="800" fill="#ffffff" text-anchor="middle">L</text></svg>
+              </span>
+              <span>Hi Bella — nice offer, but it’s a bit above our budget.</span>
+            </div>
+            <div class="bubble creator">
+              <span class="avatar" aria-hidden="true">
+                <!-- Bella avatar (teal gradient + initial B) -->
+                <svg viewBox="0 0 100 100"><defs><linearGradient id="aB" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#5fd1c3"/><stop offset="1" stop-color="#7bb6ff"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#aB)"/><text x="50" y="62" font-size="52" font-weight="800" fill="#ffffff" text-anchor="middle">B</text></svg>
+              </span>
+              <span>Thanks Luke — I’ll send an adjusted offer in a moment!</span>
+            </div>
           </div>
-        </button>
+          <div class="homebar" aria-hidden="true"></div>
+        </div>
 
-        <button class="store-btn">
-          <div class="store-icon">▶</div>
-          <div class="store-text">
-            <span>Get it on</span>
-            <span>Google Play</span>
+        <!-- Right Phone (Brands) -->
+        <div class="phone float-r" aria-label="Brand phone mockup">
+          <div class="notch" aria-hidden="true"></div>
+          <!-- Removed crossed-out elements: header, chips, dark card, counters -->
+          <!-- Keep clean state and show only approval + highlighted Viefluence invite -->
+          <div class="toast" role="status" aria-live="polite">
+            <div class="item">
+              <div class="left">
+                <div class="avatar" aria-hidden="true">
+                  <!-- Simple C&A-like monogram -->
+                  <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#ffffff"/><text x="50" y="60" font-size="36" font-weight="800" fill="#0f1225" text-anchor="middle">C&A</text></svg>
+                </div>
+                <span><strong>Your content has been approved!</strong>&nbsp; Great job — we’re ready to publish.</span>
+              </div>
+              <span class="dot" style="background:var(--success)"></span>
+            </div>
+            <div class="item emph">
+              <div class="left">
+                <div class="avatar" aria-hidden="true">
+                  <!-- Viefluence monogram -->
+                  <svg viewBox="0 0 100 100"><defs><linearGradient id="avf" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#7b61ff"/><stop offset="1" stop-color="#b86dff"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#avf)"/><text x="50" y="60" font-size="28" font-weight="800" fill="#fff" text-anchor="middle">VIE</text></svg>
+                </div>
+                <span><strong>Viefluence</strong> — You have a new <strong>Campaign Invitation</strong>!</span>
+              </div>
+              <span class="dot" style="background:var(--purple)"></span>
+            </div>
           </div>
-        </button>
+          <div class="homebar" aria-hidden="true"></div>
+        </div>
       </div>
     </section>
 
-    <!-- Right Phone -->
-    <div class="phone-column">
-      <div class="phone">
-        <div class="phone-header">
-          <span>Your Campaigns</span>
-          <div class="avatar-sm"></div>
-        </div>
+    <!-- About -->
+    <section class="section" aria-labelledby="about">
+      <h2 id="about" style="font-size:28px; margin:0 0 12px;">About Viefluence</h2>
+      <p class="lead">Viefluence is a matchmaking agency for creators and brands in technology, science, and innovation. Our role is simple: connect the right people and make collaboration effortless. Every connection starts with a conversation — and that’s where we come in.</p>
+    </section>
 
-        <div class="logo-row">
-          <div class="logo-chip">C&A</div>
-          <div class="logo-chip">SS</div>
-          <div class="logo-chip">VW</div>
-          <div class="logo-chip">⋔</div>
-        </div>
-
-        <div class="campaign-card">
-          <h3>Explore. Negotiate.<br />Manage. Report!</h3>
-          <div class="campaign-meta">
-            <span><strong>12</strong>Offers</span>
-            <span><strong>4</strong>Campaigns</span>
-            <span><strong>7</strong>Reports</span>
-          </div>
-        </div>
-
-        <div class="notif">
-          <div class="notif-logo">C&A</div>
-          <p>
-            <span>Your content has been approved!</span>
-            Great job — we’re ready to go live.
-          </p>
-          <div class="notif-dot"></div>
-        </div>
-
-        <div class="notif notif-2">
-          <div class="notif-logo">▶</div>
-          <p>
-            <span>New campaign invitation</span>
-            influence.vision just sent you a new offer.
-          </p>
-          <div class="notif-dot"></div>
-        </div>
+    <!-- Contact Only CTA -->
+    <section class="section" aria-labelledby="contact">
+      <div class="contact">
+        <h3 id="contact">Ready to start a conversation?</h3>
+        <a class="cta-email" href="mailto:hello@viefluence.com">hello@viefluence.com</a>
       </div>
-    </div>
-  </main>
+    </section>
+
+    <footer>
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:space-between;">
+        <div>© <span id="y"></span> Viefluence Agency • Influencer Marketing for Tech &amp; STEM</div>
+        <div style="opacity:.7">Vienna, AT</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
+</html>
+
 </html>
