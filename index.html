@@ -22,6 +22,7 @@
       padding: 0 1.5rem;
     }
 
+    /* HEADER */
     header {
       padding: 1.3rem 0;
       display: flex;
@@ -29,11 +30,7 @@
       justify-content: flex-start;
     }
 
-    header img {
-      width: 150px;
-      height: auto;
-    }
-
+    /* HERO */
     .hero {
       text-align: center;
       padding: 4rem 0 3rem;
@@ -72,16 +69,18 @@
       color: #000;
     }
 
-    /* Stats Section */
+    /* STATS */
     .stats-section {
       margin: 4rem 0;
       text-align: center;
     }
 
     .stats-title {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 600;
-      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 2.2rem;
     }
 
     .stats-grid {
@@ -96,27 +95,36 @@
     }
 
     .stat-card {
-      background: #12182b;
-      padding: 1.2rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: #101628;
+      padding: 1.4rem 1.2rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+      text-align: left;
     }
 
     .stat-number {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 700;
       background: linear-gradient(90deg, #0A4DFF, #CC59FF);
       -webkit-background-clip: text;
       color: transparent;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.35rem;
     }
 
     .stat-label {
       font-size: 0.9rem;
-      color: #b5b7c8;
+      font-weight: 600;
+      color: #e5e7f3;
+      margin-bottom: 0.2rem;
     }
 
-    /* 2-column cards */
+    .stat-note {
+      font-size: 0.82rem;
+      color: #9ca3ba;
+    }
+
+    /* TWO COL SECTIONS */
     .grid {
       display: grid;
       gap: 2rem;
@@ -148,8 +156,20 @@
 <body>
   <div class="container">
 
+    <!-- HEADER WITH BASE64 LOGO -->
     <header>
-      <img src="logo.png" alt="Viefluence Logo">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img 
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAIAAABEtEjdAAAACXBIWXMAAA7EAAAAOwEbd1oZAAAVTklEQVR4nO3dS48kx3U/8M9sFm1FTQm2iGswuEHoRrJm0aYWA0BS0hpsNnOw++7tsGnDi3Y846yrE7i6E1kCVC2sXxAZh2rYJqkYULERqM0SmoxJpSU3JPpC5zfvzNm5szmZ8993vO+c853znXO+55zvnOd87ud85zvOedc75znfOcO5/zLJJJIAAAAAAAPBEPSh7AADgTc0BAACQWgMAAEAtDQAAQGkNAABALQ0AAEBpDQAAQC0NAAAQSw1A/9vyJpC0HnvIiVwAAAAASUVORK5CYII=" 
+          alt="Viefluence Logo"
+          style="width:42px; height:auto;"
+        >
+
+        <div style="display:flex; flex-direction:column; line-height:1;">
+          <span style="font-size:1.1rem; font-weight:600;">VIEFLUENCE</span>
+          <span style="font-size:0.75rem; color:#9ca3af;">Influencer Marketing</span>
+        </div>
+      </div>
     </header>
 
     <!-- HERO -->
@@ -165,27 +185,31 @@
 
     <!-- STATS SECTION -->
     <section class="stats-section">
-      <div class="stats-title">The rise of creator-driven marketing.</div>
+      <div class="stats-title">THE RISE OF CREATOR-DRIVEN MARKETING.</div>
 
       <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-number">+18%</div>
-          <div class="stat-label">Yearly growth of UGC content</div>
+          <div class="stat-label">UGC growth per year</div>
+          <div class="stat-note">Creator-style content is one of the fastest growing formats in digital marketing.</div>
         </div>
 
         <div class="stat-card">
           <div class="stat-number">70%</div>
-          <div class="stat-label">Consumers influenced by creators</div>
+          <div class="stat-label">Consumers influenced</div>
+          <div class="stat-note">Most buyers say creators have a stronger impact on decisions than traditional ads.</div>
         </div>
 
         <div class="stat-card">
           <div class="stat-number">14×</div>
-          <div class="stat-label">Higher conversion vs. display ads</div>
+          <div class="stat-label">Higher conversions</div>
+          <div class="stat-note">Influencer content outperforms standard display ads in driving action.</div>
         </div>
 
         <div class="stat-card">
           <div class="stat-number">€21B</div>
-          <div class="stat-label">Creator marketing industry in 2025</div>
+          <div class="stat-label">Creator market size</div>
+          <div class="stat-note">Creator marketing is now a multi-billion euro industry — and still expanding.</div>
         </div>
       </div>
     </section>
@@ -215,4 +239,5 @@
 
 </body>
 </html>
+
 
