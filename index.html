@@ -2,242 +2,402 @@
    <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
+  <title>Viefluence — Your next campaign starts here.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Viefluence — Where Brands Meet the Right Creators</title>
-  <meta name="description" content="Viefluence connects forward-thinking brands ..." />
-  <meta property="og:title" content="Viefluence — Where Brands Meet the Right Creators" />
-  <meta property="og:description" content="Influencer matchmaking..." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#7b61ff" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- ✅ Your new favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Palette aligned with your reference */
-      --bg: #f6f2ff;           /* soft lilac */
-      --bg-accent: #efe8ff;    /* subtle panel */
-      --ink: #0f1225;          /* main text (deep navy) */
-      --muted: #65677a;        /* secondary text */
-      --card: #ffffff;         /* cards */
-      --purple: #7b61ff;       /* primary */
-      --purple-2: #b86dff;     /* accent */
-      --night: #0e1020;        /* dark */
-      --success: #4ad57a;
-      --danger: #ff5f6d;
-      --shadow: 0 20px 60px rgba(15,18,37,.14);
-      --radius-xl: 28px;
+      --violet: #7c5cff;
+      --violet-soft: #e6ddff;
+      --blue-soft: #bcd3ff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --bg-soft: #f5f6ff;
+      --radius-phone: 36px;
     }
 
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
+    * {
       margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--ink);
-      background:
-        radial-gradient(1200px 600px at 15% -10%, #ffffff 10%, transparent 60%),
-        radial-gradient(1200px 800px at 90% -20%, #ffffff 10%, transparent 60%),
-        linear-gradient(180deg, var(--bg) 0%, #faf7ff 100%);
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    a { color: inherit; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
-
-    header { padding: 28px 0 0; }
-    .nav {
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #f6f2ff 0, #f9fbff 45%, #f3f4ff 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      color: var(--text-main);
     }
-    .logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo svg { height: 28px; width: auto; display: block; }
 
-    /* Wordmark only, same color as site (no burgundy) */
-    .wordmark { font-weight: 800; letter-spacing: .6px; font-size: 18px; color: var(--ink); }
-
-    .cta-email {
-      display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-      padding: 12px 18px; border-radius: 14px; background: var(--ink); color: #fff;
-      font-weight: 600; letter-spacing: .2px; box-shadow: var(--shadow);
+    .page {
+      width: 100%;
+      max-width: 480px;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    .cta-email:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
-    /* Hero */
-    .hero { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 36px; padding: 64px 0 40px; }
-    .eyebrow { text-transform: uppercase; font-size: 12px; letter-spacing: .2em; color: var(--muted); font-weight: 600; }
-    .h1 { font-size: clamp(36px, 6vw, 72px); line-height: 1.02; font-weight: 800; margin: 10px 0 18px; }
-    .h1 .accent { color: var(--purple); }
-    .sub { font-size: clamp(16px, 2.4vw, 18px); color: var(--muted); max-width: 50ch; }
+    /* Top purple bar (status bar style) */
+    .status-bar {
+      height: 42px;
+      background: var(--violet);
+      color: #f9fafb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.25rem;
+      font-size: 0.8rem;
+    }
 
-    /* Phones */
-    .phones { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .status-left span:first-child {
+      font-weight: 500;
+    }
 
-    /* outer smartphone frame */
+    .status-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .status-pill {
+      padding: 0.1rem 0.45rem;
+      border-radius: 999px;
+      background: #4c31cc;
+      font-size: 0.7rem;
+    }
+
+    main.hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 1.4rem 1.25rem 2.5rem;
+      background: linear-gradient(180deg, #f7f4ff 0, #f9fbff 80%);
+    }
+
+    /* Phones row */
+    .phones-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.1rem;
+    }
+
     .phone {
-      background: var(--card); border-radius: 44px; padding: 18px 14px; box-shadow: var(--shadow);
-      outline: 6px solid #0f1225; /* bezel */
-      overflow: hidden; position: relative; min-height: 560px;
-    }
-    .notch { width: 46%; height: 6px; background: #e8e6f7; border-radius: 999px; margin: 0 auto 12px; }
-    .homebar { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 90px; height: 6px; background: #d9d7ea; border-radius: 99px; opacity: .9; }
-
-    .banner {
-      margin: 0 14px; border-radius: 22px; padding: 24px; background: #9bb2ff; color: #fff; font-size: 26px; font-weight: 800; line-height: 1.2;
+      flex: 1;
+      background: #ffffff;
+      border-radius: var(--radius-phone);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+      padding: 1.1rem 0.9rem 1.3rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .chat { position: absolute; left: 16px; right: 16px; bottom: 36px; display: flex; flex-direction: column; gap: 12px; }
-    .bubble { padding: 12px 14px; border-radius: 16px; font-size: 14px; line-height: 1.4; max-width: 86%; box-shadow: 0 8px 24px rgba(10,12,30,.06); display: flex; align-items: center; gap: 10px; }
-    .bubble.brand { background: #fff; border: 1px solid #eef; align-self: flex-start; }
-    .bubble.creator { background: #f0f5ff; align-self: flex-end; }
-
-    .avatar { width: 34px; height: 34px; border-radius: 50%; flex: 0 0 34px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,.12); }
-    .avatar svg { display: block; width: 100%; height: 100%; }
-
-    /* Right (brand) phone — simplified */
-    .toast { position: absolute; left: 16px; right: 16px; bottom: 36px; display: grid; gap: 10px; }
-    .toast .item { background: #fff; border-radius: 18px; padding: 12px 14px; box-shadow: 0 12px 26px rgba(10,12,30,.08); display: flex; justify-content: space-between; align-items: center; font-size: 14px; border: 1px solid rgba(12,14,30,.06); }
-    .toast .emph { border: 2px solid var(--purple); box-shadow: 0 16px 36px rgba(123,97,255,.25); }
-    .left { display: flex; align-items: center; gap: 10px; }
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-
-    /* About */
-    .section { padding: 60px 0 36px; }
-    .lead { font-size: 18px; color: var(--muted); max-width: 72ch; }
-
-    /* Contact */
-    .contact { background: linear-gradient(180deg, rgba(123,97,255,.08), rgba(184,109,255,.06)); border: 1px solid rgba(123,97,255,.15); border-radius: var(--radius-xl); padding: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; box-shadow: var(--shadow); }
-    .contact h3 { margin: 0; font-size: clamp(22px, 2.6vw, 28px); }
-
-    footer { padding: 38px 0 60px; color: var(--muted); font-size: 14px; }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .float-l { animation: float 9s ease-in-out infinite; }
-      .float-r { animation: float 11s ease-in-out infinite; }
-      @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .phone-notch {
+      height: 6px;
+      width: 48%;
+      border-radius: 999px;
+      background: #e5ddff;
+      margin: 0.3rem auto 1.1rem;
     }
-    @media (max-width: 980px) { .hero { grid-template-columns: 1fr; } .phones { order: -1; } }
+
+    /* Left phone content */
+    .left-screen {
+      background: #a9c7ff;
+      border-radius: 26px;
+      padding: 1.2rem 0.85rem 4.4rem;
+      color: #ffffff;
+      position: relative;
+    }
+
+    .left-screen h2 {
+      font-size: 1.3rem;
+      line-height: 1.05;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .msg-card {
+      position: absolute;
+      left: 0.85rem;
+      right: 0.85rem;
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.18);
+      padding: 0.9rem 0.95rem;
+      display: flex;
+      gap: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .msg-card.top {
+      top: 55%;
+      transform: translateY(-50%);
+    }
+
+    .msg-card.bottom {
+      top: auto;
+      bottom: -3.1rem;
+      background: #f3f7ff;
+    }
+
+    .msg-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(145deg, #8b5bff, #c65dff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .msg-avatar.blue {
+      background: linear-gradient(145deg, #00b4ff, #6bd6ff);
+    }
+
+    .msg-text span {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    /* Right phone notifications */
+    .notif-card {
+      background: #fdfdff;
+      border-radius: 24px;
+      padding: 0.85rem 0.95rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.8rem;
+      box-shadow: 0 12px 26px rgba(15, 23, 42, 0.16);
+    }
+
+    .notif-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .notif-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #22c55e;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .notif-dot.pink {
+      background: #f97373;
+    }
+
+    .notif-text span {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .notif-text small {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Headline area */
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: #9ca3af;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      line-height: 1.15;
+      margin-bottom: 0.9rem;
+    }
+
+    .accent {
+      color: var(--violet);
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2.1rem;
+      max-width: 100%;
+    }
+
+    /* Domain footer */
+    .domain {
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.9rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid #e5e7eb;
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .domain a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Tablet & up */
+    @media (min-width: 768px) {
+      .page {
+        max-width: 900px;
+        border-radius: 40px;
+        overflow: hidden;
+        box-shadow: 0 24px 70px rgba(15, 23, 42, 0.18);
+        margin: 1.5rem 0;
+      }
+
+      main.hero {
+        padding: 2.2rem 3rem 2.4rem;
+      }
+
+      .phones-row {
+        margin-bottom: 2.4rem;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .subtitle {
+        max-width: 420px;
+      }
+    }
+
+    /* Small phones, avoid overflow */
+    @media (max-width: 360px) {
+      .phones-row {
+        gap: 0.6rem;
+      }
+
+      .phone {
+        padding: 1rem 0.75rem 1.2rem;
+      }
+
+      .left-screen {
+        padding: 1rem 0.75rem 4.2rem;
+      }
+
+      .left-screen h2 {
+        font-size: 1.16rem;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Top Nav -->
-    <header>
-      <div class="nav" aria-label="Top Navigation">
-        <a class="logo" href="#" aria-label="Viefluence Home">
-          <!-- LOGO: wordmark only (no star), same ink color -->
-          <svg viewBox="0 0 260 28" role="img" aria-label="Viefluence wordmark">
-  <defs>
-    <linearGradient id="gradVIE" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="var(--purple)"/>
-      <stop offset="1" stop-color="var(--purple-2)"/>
-    </linearGradient>
-  </defs>
-  <text x="2" y="22" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1.2" fill="url(#gradVIE)">VIE</text>
-  <text x="60" y="22" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="1.2" fill="var(--ink)">FLUENCE</text>
-</svg>
-          
-        </a>
-        
+  <div class="page">
+    <!-- Purple status bar -->
+    <header class="status-bar">
+      <div class="status-left">
+        <span>17:15</span>
+      </div>
+      <div class="status-right">
+        <span>5G</span>
+        <span class="status-pill">82</span>
       </div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="home-hero">
-      <div>
+    <main class="hero">
+      <!-- Phones -->
+      <section class="phones-row">
+        <!-- Left phone -->
+        <div class="phone">
+          <div class="phone-notch"></div>
+          <div class="left-screen">
+            <h2>
+              Doing<br />
+              Collab<br />
+              have
+            </h2>
+
+            <div class="msg-card top">
+              <div class="msg-avatar">L</div>
+              <div class="msg-text">
+                <span>Hi Bella</span>
+                Nice offer, but it’s a bit above our budget.
+              </div>
+            </div>
+
+            <div class="msg-card bottom">
+              <div class="msg-avatar blue">B</div>
+              <div class="msg-text">
+                <span>Thanks Luke</span>
+                I’ll send an adjusted offer in a moment!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right phone -->
+        <div class="phone">
+          <div class="phone-notch"></div>
+
+          <div class="notif-card">
+            <div class="notif-logo">C&A</div>
+            <div class="notif-text">
+              <span>Your content has been approved!</span>
+              <small>Great job — we’re ready to publish.</small>
+            </div>
+            <div class="notif-dot"></div>
+          </div>
+
+          <div class="notif-card">
+            <div class="notif-logo">VIE</div>
+            <div class="notif-text">
+              <span>Viefluence —</span>
+              <small>You have a new campaign invitation!</small>
+            </div>
+            <div class="notif-dot pink"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Headline -->
+      <section>
         <div class="eyebrow">For creators & brands</div>
-        <h1 id="home-hero" class="h1">Your next <span class="accent">campaign</span> starts here.</h1>
-        <p class="sub">Viefluence connects forward‑thinking brands with exceptional tech & STEM creators — simplifying collaborations from first contact to final delivery.</p>
+        <h1>Your next <span class="accent">campaign</span> starts here.</h1>
+        <p class="subtitle">
+          Match with great brands, negotiate quickly and keep every part of your collaborations in one clean workflow.
+        </p>
+      </section>
+
+      <!-- Domain -->
+      <div class="domain">
+        <a href="https://viefluence.com" target="_blank" rel="noopener">viefluence.com</a>
       </div>
-
-      <div class="phones">
-        <!-- Left Phone (Creators) -->
-        <div class="phone float-l" aria-label="Creator phone mockup">
-          <div class="notch" aria-hidden="true"></div>
-          <!-- Search bar removed as requested -->
-          <div class="banner" aria-hidden="true">Doing Collabs have never been so easy</div>
-          <div class="chat" role="log" aria-live="polite">
-            <div class="bubble brand">
-              <span class="avatar" aria-hidden="true">
-                <!-- Luke avatar (gradient + initial L) -->
-                <svg viewBox="0 0 100 100"><defs><linearGradient id="aL" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#7b61ff"/><stop offset="1" stop-color="#b86dff"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#aL)"/><text x="50" y="62" font-size="52" font-weight="800" fill="#ffffff" text-anchor="middle">L</text></svg>
-              </span>
-              <span>Hi Bella — nice offer, but it’s a bit above our budget.</span>
-            </div>
-            <div class="bubble creator">
-              <span class="avatar" aria-hidden="true">
-                <!-- Bella avatar (teal gradient + initial B) -->
-                <svg viewBox="0 0 100 100"><defs><linearGradient id="aB" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#5fd1c3"/><stop offset="1" stop-color="#7bb6ff"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#aB)"/><text x="50" y="62" font-size="52" font-weight="800" fill="#ffffff" text-anchor="middle">B</text></svg>
-              </span>
-              <span>Thanks Luke — I’ll send an adjusted offer in a moment!</span>
-            </div>
-          </div>
-          <div class="homebar" aria-hidden="true"></div>
-        </div>
-
-        <!-- Right Phone (Brands) -->
-        <div class="phone float-r" aria-label="Brand phone mockup">
-          <div class="notch" aria-hidden="true"></div>
-          <!-- Removed crossed-out elements: header, chips, dark card, counters -->
-          <!-- Keep clean state and show only approval + highlighted Viefluence invite -->
-          <div class="toast" role="status" aria-live="polite">
-            <div class="item">
-              <div class="left">
-                <div class="avatar" aria-hidden="true">
-                  <!-- Simple C&A-like monogram -->
-                  <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="#ffffff"/><text x="50" y="60" font-size="36" font-weight="800" fill="#0f1225" text-anchor="middle">C&A</text></svg>
-                </div>
-                <span><strong>Your content has been approved!</strong>&nbsp; Great job — we’re ready to publish.</span>
-              </div>
-              <span class="dot" style="background:var(--success)"></span>
-            </div>
-            <div class="item emph">
-              <div class="left">
-                <div class="avatar" aria-hidden="true">
-                  <!-- Viefluence monogram -->
-                  <svg viewBox="0 0 100 100"><defs><linearGradient id="avf" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#7b61ff"/><stop offset="1" stop-color="#b86dff"/></linearGradient></defs><circle cx="50" cy="50" r="50" fill="url(#avf)"/><text x="50" y="60" font-size="28" font-weight="800" fill="#fff" text-anchor="middle">VIE</text></svg>
-                </div>
-                <span><strong>Viefluence</strong> — You have a new <strong>Campaign Invitation</strong>!</span>
-              </div>
-              <span class="dot" style="background:var(--purple)"></span>
-            </div>
-          </div>
-          <div class="homebar" aria-hidden="true"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section class="section" aria-labelledby="about">
-      <h2 id="about" style="font-size:28px; margin:0 0 12px;">About Viefluence</h2>
-      <p class="lead">Viefluence is a matchmaking agency for creators and brands in technology, science, and innovation. Our role is simple: connect the right people and make collaboration effortless. Every connection starts with a conversation — and that’s where we come in.</p>
-    </section>
-
-    <!-- Contact Only CTA -->
-    <section class="section" aria-labelledby="contact">
-      <div class="contact">
-        <h3 id="contact">Ready to start a conversation?</h3>
-        <a class="cta-email" href="mailto:hello@viefluence.com">hello@viefluence.com</a>
-      </div>
-    </section>
-
-    <footer>
-      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:space-between;">
-        <div>© <span id="y"></span> Viefluence Agency • Influencer Marketing for Tech &amp; STEM</div>
-        <div style="opacity:.7">Vienna, AT</div>
-      </div>
-    </footer>
+    </main>
   </div>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
 </body>
-</html>
-
 </html>
