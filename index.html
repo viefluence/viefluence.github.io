@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Viefluence – Influencer Marketing</title>
 
   <style>
@@ -10,234 +10,74 @@
       margin: 0;
       padding: 0;
       font-family: system-ui, sans-serif;
-      background: #0a0f1f;
+      background: linear-gradient(135deg, #0A4DFF, #CC59FF);
       color: #ffffff;
-      line-height: 1.6;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
 
     .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 600px;
       padding: 0 1.5rem;
     }
 
-    /* HEADER */
-    header {
-      padding: 1.3rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
+    .logo {
+      width: 70px;
+      height: auto;
+      margin-bottom: 1.8rem;
     }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 4rem 0 3rem;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      font-style: italic;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero p {
-      font-size: 1.05rem;
-      color: #b5b7c8;
-      max-width: 530px;
-      margin: 0.5rem auto 2rem;
-    }
-
-    .hero-buttons a {
-      text-decoration: none;
-      margin: 0.4rem;
-      padding: 0.75rem 1.4rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      display: inline-block;
-    }
-
-    .btn-main {
-      background: linear-gradient(90deg, #0A4DFF, #CC59FF);
-      color: #fff;
-    }
-
-    .btn-light {
-      background: #ffffff;
-      color: #000;
-    }
-
-    /* STATS */
-    .stats-section {
-      margin: 4rem 0;
-      text-align: center;
-    }
-
-    .stats-title {
-      font-size: 1.4rem;
+    h1 {
+      font-size: 1.9rem;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
       margin-bottom: 2.2rem;
+      opacity: 0.9;
     }
 
-    .stats-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    @media(min-width: 768px) {
-      .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .stat-card {
-      background: #101628;
-      padding: 1.4rem 1.2rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
-      text-align: left;
-    }
-
-    .stat-number {
-      font-size: 1.8rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #0A4DFF, #CC59FF);
-      -webkit-background-clip: text;
-      color: transparent;
-      margin-bottom: 0.35rem;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
+    .buttons a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 0.8rem 1.4rem;
+      margin: 0.4rem;
+      border-radius: 10px;
+      font-size: 1rem;
       font-weight: 600;
-      color: #e5e7f3;
-      margin-bottom: 0.2rem;
+      color: #000;
+      background: #ffffff;
     }
 
-    .stat-note {
-      font-size: 0.82rem;
-      color: #9ca3ba;
-    }
-
-    /* TWO COL SECTIONS */
-    .grid {
-      display: grid;
-      gap: 2rem;
-      margin: 4rem 0;
-    }
-
-    @media(min-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .card {
-      background: #12182b;
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 0 3rem;
-      font-size: 0.85rem;
-      color: #8d90a4;
-    }
   </style>
 </head>
 
 <body>
+
   <div class="container">
+    
+    <!-- LOGO (Base64 V-Icon) -->
+    <img 
+      class="logo"
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAIAAABEtEjdAAAACXBIWXMAAA7EAAAAOwEbd1oZAAAVTklEQVR4nO3dS48kx3U/8M9sFm1FTQm2iGswuEHoRrJm0aYWA0BS0hpsNnOw++7tsGnDi3Y846yrE7i6E1kCVC2sXxAZh2rYJqkYULERqM0SmoxJpSU3JPpC5zfvzNm5szmZ8993vO+c853znXO+55zvnOd87ud85zvOedc75znfOcO5/zLJJJIAAAAAAAPBEPSh7AADgTc0BAACQWgMAAEAtDQAAQGkNAABALQ0AAEBpDQAAQC0NAAAQSw1A/9vyJpC0HnvIiVwAAAAASUVORK5CYII="
+      alt="Viefluence Logo"
+    >
 
-    <!-- HEADER WITH BASE64 LOGO -->
-    <header>
-      <div style="display:flex; align-items:center; gap:12px;">
-        <img 
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAIAAABEtEjdAAAACXBIWXMAAA7EAAAAOwEbd1oZAAAVTklEQVR4nO3dS48kx3U/8M9sFm1FTQm2iGswuEHoRrJm0aYWA0BS0hpsNnOw++7tsGnDi3Y846yrE7i6E1kCVC2sXxAZh2rYJqkYULERqM0SmoxJpSU3JPpC5zfvzNm5szmZ8993vO+c853znXO+55zvnOd87ud85zvOedc75znfOcO5/zLJJJIAAAAAAAPBEPSh7AADgTc0BAACQWgMAAEAtDQAAQGkNAABALQ0AAEBpDQAAQC0NAAAQSw1A/9vyJpC0HnvIiVwAAAAASUVORK5CYII=" 
-          alt="Viefluence Logo"
-          style="width:42px; height:auto;"
-        >
+    <h1>Influencer campaigns made simple.</h1>
 
-        <div style="display:flex; flex-direction:column; line-height:1;">
-          <span style="font-size:1.1rem; font-weight:600;">VIEFLUENCE</span>
-          <span style="font-size:0.75rem; color:#9ca3af;">Influencer Marketing</span>
-        </div>
-      </div>
-    </header>
+    <p>We connect YouTube creators with brands — clean, fast and effective.</p>
 
-    <!-- HERO -->
-    <section class="hero">
-      <h1>Influencer campaigns that perform.</h1>
-      <p>Connecting YouTube creators with tech-forward brands through clean, simple, and effective execution.</p>
-
-      <div class="hero-buttons">
-        <a class="btn-main" href="mailto:hello@viefluence.com?subject=Brand%20Campaign">Start a brand campaign</a>
-        <a class="btn-light" href="mailto:hello@viefluence.com?subject=Creator%20Application">Join as Creator</a>
-      </div>
-    </section>
-
-    <!-- STATS SECTION -->
-    <section class="stats-section">
-      <div class="stats-title">THE RISE OF CREATOR-DRIVEN MARKETING.</div>
-
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-number">+18%</div>
-          <div class="stat-label">UGC growth per year</div>
-          <div class="stat-note">Creator-style content is one of the fastest growing formats in digital marketing.</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-number">70%</div>
-          <div class="stat-label">Consumers influenced</div>
-          <div class="stat-note">Most buyers say creators have a stronger impact on decisions than traditional ads.</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-number">14×</div>
-          <div class="stat-label">Higher conversions</div>
-          <div class="stat-note">Influencer content outperforms standard display ads in driving action.</div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-number">€21B</div>
-          <div class="stat-label">Creator market size</div>
-          <div class="stat-note">Creator marketing is now a multi-billion euro industry — and still expanding.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TWO COL SECTIONS -->
-    <div class="grid">
-      <div class="card" id="brands">
-        <h2>For Brands</h2>
-        <p>Find creators who actually influence — not inflate metrics. We match your brand with YouTubers who educate, build, and convert.</p>
-      </div>
-
-      <div class="card" id="creators">
-        <h2>For Creators</h2>
-        <p>Get better sponsorships without the stress. We bring you deals that fit your channel, negotiate for you, and keep everything simple.</p>
-      </div>
+    <div class="buttons">
+      <a href="mailto:hello@viefluence.com?subject=Brand%20Inquiry">I'm a Brand</a>
+      <a href="mailto:hello@viefluence.com?subject=Creator%20Application">I'm a Creator</a>
     </div>
-
-    <footer>
-      © <span id="year"></span> Viefluence. All rights reserved.
-    </footer>
 
   </div>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
 </body>
 </html>
-
-
