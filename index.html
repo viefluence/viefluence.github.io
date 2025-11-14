@@ -1,88 +1,841 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Influencer Marketing Agency</title>
-    <style>
-        /* CSS Styles */
-        :root {
-            /* Color Variables */
-            --gradient-start: #0A4DFF;
-            --gradient-end: #CC59FF;
-            --text-color: #FFFFFF; /* White for good readability on dark background */
-            --button-color: #FFFFFF; /* White button */
-            --button-text-color: #0A4DFF; /* Blue text on white button */
-            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Viefluence – Influencer Campaigns That Perform</title>
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-light: #0b1020;
+      --card: #111827;
+      --accent: #8b5cf6;
+      --accent-soft: rgba(139, 92, 246, 0.12);
+      --accent-strong: #a855f7;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --danger: #f97373;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --shadow-soft: 0 18px 50px rgba(15, 23, 42, 0.75);
+      --shadow-light: 0 10px 30px rgba(15, 23, 42, 0.55);
+    }
 
-        body {
-            /* Background with the desired gradient */
-            background: linear-gradient(90deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            color: var(--text-color);
-            font-family: var(--font-family);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center; /* Horizontal centering */
-            align-items: center; /* Vertical centering */
-            min-height: 100vh; /* Minimum height of the viewport */
-            text-align: center;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        .container {
-            max-width: 800px; /* Max width for content */
-            padding: 20px;
-        }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        h1 {
-            font-size: 2.5em; /* Large heading */
-            margin-bottom: 0.5em;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        p {
-            font-size: 1.3em; /* Readable body text */
-            line-height: 1.5;
-            margin-bottom: 2em;
-            opacity: 0.9; /* Slight transparency for a clean look */
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        .cta-button {
-            /* Button Styling */
-            display: inline-block;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            font-weight: bold;
-            text-decoration: none; /* No underline */
-            color: var(--button-text-color);
-            background-color: var(--button-color);
-            border-radius: 50px; /* Rounded corners */
-            transition: background-color 0.3s, transform 0.1s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    .page {
+      min-height: 100vh;
+    }
 
-        .cta-button:hover {
-            /* Hover Effect */
-            background-color: #EEEEEE; /* Slightly darker on hover */
-            transform: translateY(-2px); /* Slight "lift" effect */
-        }
-    </style>
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.98), rgba(2, 6, 23, 0.92), transparent);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      gap: 1.25rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, #4f46e5, #22d3ee, #ec4899, #4f46e5);
+      padding: 2px;
+      box-shadow: 0 0 26px rgba(129, 140, 248, 0.8);
+    }
+
+    .logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 20% 0, #1d2437, #020617 65%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text span:first-child {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .logo-text span:last-child {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6b7280;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1.75rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+
+    .nav-links a:hover {
+      color: #e5e7eb;
+    }
+
+    .nav-cta {
+      display: none;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      outline: none;
+      border: 1px solid transparent;
+      padding: 0.55rem 1.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, #f97316, transparent 60%),
+        radial-gradient(circle at 100% 0, #22d3ee, transparent 55%),
+        linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #f9fafb;
+      box-shadow: 0 14px 40px rgba(88, 28, 135, 0.65);
+      border-color: rgba(129, 140, 248, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 44px rgba(88, 28, 135, 0.85);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.7);
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-light);
+    }
+
+    .btn-outline:hover {
+      background: rgba(30, 64, 175, 0.7);
+      border-color: rgba(191, 219, 254, 0.7);
+      color: #f9fafb;
+    }
+
+    main {
+      padding: 2.5rem 0 3.5rem;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .hero {
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.38);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+      margin-bottom: 0.95rem;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #bbf7d0, #22c55e);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      line-height: 1.1;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #f97316, #eab308, #22d3ee);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 28rem;
+      color: var(--muted);
+      margin-bottom: 1.35rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .pill {
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .hero-visual {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0 0, rgba(250, 204, 21, 0.12), transparent 55%),
+        radial-gradient(circle at 120% 0, rgba(96, 165, 250, 0.12), transparent 55%),
+        radial-gradient(circle at 50% 120%, rgba(139, 92, 246, 0.2), transparent 60%),
+        linear-gradient(145deg, #020617, #020617);
+      padding: 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% -10%, rgba(252, 211, 77, 0.25), transparent 60%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .hero-visual-inner {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(129, 140, 248, 0.5);
+      color: #e5e7eb;
+      font-size: 0.75rem;
+      max-width: fit-content;
+    }
+
+    .hero-badge-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #bbf7d0, #22c55e);
+      box-shadow: 0 0 16px rgba(22, 163, 74, 0.9);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+
+    .stat-card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 18px;
+      padding: 0.6rem 0.7rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      font-size: 0.78rem;
+    }
+
+    .stat-label {
+      color: #9ca3af;
+      margin-bottom: 0.1rem;
+    }
+
+    .stat-value {
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #9ca3af;
+      letter-spacing: 0.16em;
+      margin-bottom: 0.3rem;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-text {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+      max-width: 30rem;
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 1.2rem 1.25rem;
+      box-shadow: var(--shadow-light);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.87rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pill-tag {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e5e7eb;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #eab308, #f97316);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .process-step {
+      background: rgba(15, 23, 42, 0.95);
+      padding: 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-light);
+    }
+
+    .process-step h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .process-step span {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #9ca3af;
+    }
+
+    .process-step p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.4rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e5e7eb;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding-top: 2rem;
+      padding-bottom: 0;
+    }
+
+    .cta-section .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .cta-section .section-text {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 1.2rem 0 2rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #9ca3af;
+    }
+
+    .footer-links a:hover {
+      color: #e5e7eb;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: flex;
+      }
+
+      .hero-title {
+        font-size: 2.6rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.05fr);
+      }
+
+      .split-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
+    <header>
+      <div class="container">
+        <nav class="nav">
+          <a href="#top" class="logo">
+            <div class="logo-mark">
+              <div class="logo-inner">VIE</div>
+            </div>
+            <div class="logo-text">
+              <span>Viefluence</span>
+              <span>Influencer marketing</span>
+            </div>
+          </a>
+          <div class="nav-links">
+            <a href="#what-we-do">Services</a>
+            <a href="#brands">For Brands</a>
+            <a href="#creators">For Creators</a>
+            <a href="#process">Process</a>
+          </div>
+          <div class="nav-cta">
+            <a href="#contact" class="btn btn-outline">Start a Campaign</a>
+            <a href="#creators" class="btn btn-primary">Join as Creator</a>
+          </div>
+        </nav>
+      </div>
+    </header>
 
-    <div class="container">
-        <h1>For creators & brands</h1>
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              YouTube-first influencer campaigns
+            </div>
+            <h1 class="hero-title">
+              Influencer campaigns that <span class="highlight">actually perform</span>.
+            </h1>
+            <p class="hero-subtitle">
+              Viefluence connects high-performing YouTube creators with tech-forward brands — managing every step from outreach to execution for smoother, faster, and higher-ROI campaigns.
+            </p>
+            <div class="hero-cta">
+              <a href="#contact" class="btn btn-primary">Start your campaign</a>
+              <a href="#creators" class="btn btn-outline">Join our creator network</a>
+            </div>
+            <div class="hero-meta">
+              <span class="pill">Hands-on micro-management</span>
+              <span class="pill">Tech, software & maker focus</span>
+              <span class="pill">No wasted budget</span>
+            </div>
+          </div>
 
-        <p>
-            Your next campaign starts here.<br>
-            Match with the right brands, negotiate quickly and keep every part of your collaborations in one clean, modern workflow.
-        </p>
+          <div class="hero-visual">
+            <div class="hero-visual-inner">
+              <div>
+                <div class="hero-badge">
+                  <span class="hero-badge-dot"></span>
+                  Clean execution between brands & creators
+                </div>
+                <div class="hero-stats">
+                  <div class="stat-card">
+                    <div class="stat-label">Typical YouTube deal</div>
+                    <div class="stat-value">€3–8k</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-label">Service</div>
+                    <div class="stat-value">15–30% management fee</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-label">Focus</div>
+                    <div class="stat-value">Tech, AI & maker</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card" style="margin-top: 0.4rem;">
+                <div class="card-title">What we handle for you</div>
+                <ul class="bullet-list">
+                  <li>Creator sourcing & vetting</li>
+                  <li>Negotiation & deal structure</li>
+                  <li>Briefing & content coordination</li>
+                  <li>Compliance & brand safety checks</li>
+                  <li>Performance tracking & reporting</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <a href="mailto:hello@viefluence.com?subject=Influencer%20Campaign%20Inquiry" class="cta-button">
-            Get Started
-        </a>
-        
-    </div>
+      <section id="what-we-do">
+        <div class="container split-grid">
+          <div>
+            <div class="section-label">What we do</div>
+            <h2 class="section-title">Creator partnerships, built for performance.</h2>
+            <p class="section-text">
+              Viefluence helps brands launch influencer campaigns that convert — not just impress. No guesswork, no random creator picks. Just the right creators, the right message, and clean execution from start to finish.
+            </p>
+            <div class="badge-row">
+              <span class="badge">YouTube-first</span>
+              <span class="badge">Mid-roll integrations</span>
+              <span class="badge">Clear CTA delivery</span>
+              <span class="badge">Tracking-friendly links</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">End-to-end campaign support</div>
+            <p class="card-subtitle">
+              You focus on your product. We handle the coordination, details, and deadlines.
+            </p>
+            <ul class="bullet-list">
+              <li>Identify and vet fitting creators</li>
+              <li>Negotiate budgets, rights & deliverables</li>
+              <li>Align on briefs, talking points and timing</li>
+              <li>Monitor scripts, drafts & uploads for compliance</li>
+              <li>Track performance and share simple, clear reports</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
+      <section id="brands">
+        <div class="container split-grid">
+          <div>
+            <div class="section-label">For brands</div>
+            <h2 class="section-title">Find the right creators — not just the loudest ones.</h2>
+            <p class="section-text">
+              We specialise in YouTube creators who educate, build and solve — not just entertain. Perfect for tech, software, AI, education and maker brands that need trust, not hype.
+            </p>
+            <div class="pill-list">
+              <span class="pill-tag">Tech & engineering</span>
+              <span class="pill-tag">AI & software</span>
+              <span class="pill-tag">DIY & maker</span>
+              <span class="pill-tag">Lifestyle & education</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Every creator is vetted.</div>
+            <p class="card-subtitle">We work only with brand-safe, performance-oriented creators.</p>
+            <ul class="bullet-list">
+              <li>Authentic engagement (no inflated metrics)</li>
+              <li>Audience relevance to your ideal customer</li>
+              <li>Consistent channel quality & upload history</li>
+              <li>Brand safety & content alignment</li>
+              <li>Past sponsorship performance where available</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="creators">
+        <div class="container split-grid">
+          <div>
+            <div class="section-label">For creators</div>
+            <h2 class="section-title">More deals. Less stress.</h2>
+            <p class="section-text">
+              Viefluence brings you brand partnerships that match your content, your audience and your style — without flooding you with irrelevant offers or endless email chains.
+            </p>
+            <p class="section-text">
+              You stay creative. We handle the negotiation, expectations and coordination.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">What you get as a creator</div>
+            <ul class="bullet-list">
+              <li>Consistent, well-matched sponsorship opportunities</li>
+              <li>Clear briefs, expectations & timelines</li>
+              <li>Negotiation handled on your behalf</li>
+              <li>Fewer revisions, smoother approvals</li>
+              <li>Aligned, on-time payments</li>
+            </ul>
+            <p style="font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem;">
+              We’re not here to control your channel — only to make brand collaborations cleaner and more profitable.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="process">
+        <div class="container">
+          <div class="section-label">Process</div>
+          <h2 class="section-title">A clean 4-step system.</h2>
+          <p class="section-text">
+            Our process is built to remove friction between brands and creators. You always know what happens next, who’s responsible and how success is measured.
+          </p>
+          <div class="process-grid">
+            <div class="process-step">
+              <span>Step 01</span>
+              <h4>Discovery</h4>
+              <p>We identify creators and brands that naturally fit together — in topic, tone and audience.</p>
+            </div>
+            <div class="process-step">
+              <span>Step 02</span>
+              <h4>Strategy & Matchmaking</h4>
+              <p>We align on goals, budgets, deliverables and audience fit, then propose specific pairings.</p>
+            </div>
+            <div class="process-step">
+              <span>Step 03</span>
+              <h4>Campaign Execution</h4>
+              <p>We coordinate scripts, drafts, approvals, uploads, timing and compliance — without micro-managing creativity.</p>
+            </div>
+            <div class="process-step">
+              <span>Step 04</span>
+              <h4>Reporting</h4>
+              <p>We deliver clear, simple reports with views, clicks, sentiment and key outcomes for future decisions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container split-grid">
+          <div>
+            <div class="section-label">Why Viefluence</div>
+            <h2 class="section-title">Precision, speed and trust.</h2>
+            <p class="section-text">
+              What makes Viefluence different is not a fancy buzzword — it’s the detail work: fast communication, hands-on micro-management and a YouTube-first approach that respects both creators and brands.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-title">What you can expect</div>
+            <ul class="bullet-list">
+              <li>YouTube-first expertise, not “all platforms at once”</li>
+              <li>Hands-on micro-management of each campaign step</li>
+              <li>Transparent pricing, no hidden markups</li>
+              <li>Brand-safe creators only — no unnecessary risks</li>
+              <li>No wasted budget on poorly structured deals</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section" id="contact">
+        <div class="container">
+          <div class="section-label">Ready</div>
+          <h2 class="section-title">Work with creators your audience actually trusts.</h2>
+          <p class="section-text">
+            Whether you’re a brand planning your first YouTube integration or a creator looking for better, more consistent deals — Viefluence connects the right people and manages every detail in between.
+          </p>
+          <div class="cta-buttons">
+            <a href="mailto:hello@viefluence.com?subject=Campaign%20Inquiry" class="btn btn-primary">
+              Start a brand campaign
+            </a>
+            <a href="mailto:hello@viefluence.com?subject=Creator%20Application" class="btn btn-outline">
+              Apply as a creator
+            </a>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--muted);">
+            Prefer a quick intro? Send us a link to your brand or channel and we’ll follow up with tailored options.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Viefluence. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="#brands">Brands</a>
+          <a href="#creators">Creators</a>
+          <a href="#process">Process</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple dynamic year, optional
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
