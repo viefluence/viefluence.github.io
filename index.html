@@ -15,7 +15,6 @@
       line-height: 1.6;
     }
 
-    /* Container */
     .container {
       width: 100%;
       max-width: 1100px;
@@ -23,12 +22,11 @@
       padding: 0 1.5rem;
     }
 
-    /* Header */
     header {
-      padding: 1.2rem 0;
+      padding: 1.3rem 0;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: flex-start;
     }
 
     header img {
@@ -36,32 +34,14 @@
       height: auto;
     }
 
-    .nav-btns a {
-      margin-left: 1rem;
-      padding: 0.55rem 1.1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-
-    .brand-btn {
-      background: #ffffff;
-      color: #000;
-    }
-
-    .creator-btn {
-      background: linear-gradient(90deg, #0A4DFF, #CC59FF);
-      color: #fff;
-    }
-
-    /* Hero */
     .hero {
       text-align: center;
       padding: 4rem 0 3rem;
     }
 
     .hero h1 {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
+      font-style: italic;
       font-weight: 700;
       margin-bottom: 0.7rem;
     }
@@ -92,7 +72,51 @@
       color: #000;
     }
 
-    /* Two Columns */
+    /* Stats Section */
+    .stats-section {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .stats-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media(min-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat-card {
+      background: #12182b;
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .stat-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #0A4DFF, #CC59FF);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: #b5b7c8;
+    }
+
+    /* 2-column cards */
     .grid {
       display: grid;
       gap: 2rem;
@@ -112,11 +136,6 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .card h2 {
-      margin-top: 0;
-    }
-
-    /* Footer */
     footer {
       text-align: center;
       padding: 2rem 0 3rem;
@@ -129,13 +148,8 @@
 <body>
   <div class="container">
 
-    <!-- HEADER -->
     <header>
       <img src="logo.png" alt="Viefluence Logo">
-      <div class="nav-btns">
-        <a href="#brands" class="brand-btn">Brands</a>
-        <a href="#creators" class="creator-btn">Creators</a>
-      </div>
     </header>
 
     <!-- HERO -->
@@ -149,22 +163,46 @@
       </div>
     </section>
 
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+      <div class="stats-title">The rise of creator-driven marketing.</div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">+18%</div>
+          <div class="stat-label">Yearly growth of UGC content</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">70%</div>
+          <div class="stat-label">Consumers influenced by creators</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">14×</div>
+          <div class="stat-label">Higher conversion vs. display ads</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">€21B</div>
+          <div class="stat-label">Creator marketing industry in 2025</div>
+        </div>
+      </div>
+    </section>
+
     <!-- TWO COL SECTIONS -->
     <div class="grid">
-
       <div class="card" id="brands">
         <h2>For Brands</h2>
-        <p>Find creators who actually influence — not inflate metrics. We match your brand with YouTubers who educate, build and convert.</p>
+        <p>Find creators who actually influence — not inflate metrics. We match your brand with YouTubers who educate, build, and convert.</p>
       </div>
 
       <div class="card" id="creators">
         <h2>For Creators</h2>
         <p>Get better sponsorships without the stress. We bring you deals that fit your channel, negotiate for you, and keep everything simple.</p>
       </div>
-
     </div>
 
-    <!-- FOOTER -->
     <footer>
       © <span id="year"></span> Viefluence. All rights reserved.
     </footer>
@@ -177,3 +215,4 @@
 
 </body>
 </html>
+
